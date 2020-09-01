@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 public class Window extends Canvas{
     
     public Window(int width, int height, String title, Game game){
+        //Ventana con parametros de tamaño y visibilidad
         JFrame frame = new JFrame(title);
         
         frame.setPreferredSize(new Dimension(width, height));

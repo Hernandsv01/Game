@@ -13,6 +13,7 @@ public class Game extends Canvas implements Runnable{
     private boolean running = false;
     
     public Game(){
+        //Crea instancia de la clase Window con parametros
         new Window(WIDTH, HEIGHT, "A new start", this);
     }
     
@@ -32,6 +33,7 @@ public class Game extends Canvas implements Runnable{
     }
     
     public void run(){
+        //Pre-written code for GAME LOOP
         long lastTime = System.nanoTime();
         double amountOfTicks = 60.0;
         double ns = 1000000000/amountOfTicks;
@@ -79,6 +81,7 @@ public class Game extends Canvas implements Runnable{
     }
     
     public static void main(String[] args) {
+        //Crea instancia de la clase Game
         new Game();
     }
 }
