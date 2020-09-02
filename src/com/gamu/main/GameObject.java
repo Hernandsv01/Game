@@ -3,9 +3,15 @@ package com.gamu.main;
 import java.awt.Graphics;
 
 public abstract class GameObject {
+    //All game objects extend this abstract class
     
+    //Location
     protected int x, y;
+    
+    //ID to recognize type of object
     protected ID id;
+    
+    //Velocity of object which is then added to position
     protected int velX, velY;
     
     public GameObject(int x, int y, ID id){
@@ -17,6 +23,7 @@ public abstract class GameObject {
     public abstract void tick();
     public abstract void render(Graphics g);
     
+    //Setters to change variables
     public void setX(int x){
         this.x = x;
     }
@@ -33,6 +40,7 @@ public abstract class GameObject {
         this.velY = velY;
     }
     
+    //Getters to obtain the value of the variables
     public int getX(){
         return x;
     }
