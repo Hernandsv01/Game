@@ -28,6 +28,7 @@ public class Game extends Canvas implements Runnable{
         }
     }
     
+    
     public synchronized void start(){
         thread = new Thread(this);
         thread.start();
