@@ -15,17 +15,24 @@ public class Game extends Canvas implements Runnable{
     
     private Random r;
     private Handler handler;
+    private HUD hud;
     
     public Game(){
+        
         handler = new Handler();
         this.addKeyListener(new KeyInput(handler));
         
         //Crea instancia de la clase Window con parametros
         new Window(WIDTH, HEIGHT, "A new start", this);
+        
+        hud = new HUD();
+        
         r = new Random();
         
+        //Here the objects are created
         handler.addObject(new Player(WIDTH/2-32, HEIGHT/2-32, ID.Player));
-        handler.addObject(new Player(WIDTH/2+64, HEIGHT/2-32, ID.Player2));
+//        handler.addObject(new Player(WIDTH/2+64, HEIGHT/2-32, ID.Player2));
+        handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy));
         
     }
     
@@ -77,6 +84,7 @@ public class Game extends Canvas implements Runnable{
     
     private void tick(){
         handler.tick();
+        hud.tick();
     }
     private void render(){
         BufferStrategy bs = this.getBufferStrategy();
@@ -92,8 +100,19 @@ public class Game extends Canvas implements Runnable{
         
         handler.render(g);
         
+        hud.render(g);
+        
         g.dispose();
         bs.show();
+    }
+    
+    public static int clamp(int var, int min, int max){
+        if(var >= max)
+            return var = max;
+        else if (var <= min)
+            return var = min;
+        else
+            return var;
     }
     
     public static void main(String[] args) {

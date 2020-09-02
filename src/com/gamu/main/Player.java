@@ -18,14 +18,19 @@ public class Player extends GameObject{
         //Adds the velocity to the current position
         x += velX;
         y += velY;
+        
+        x = Game.clamp(x, 0, Game.WIDTH - 38);
+        y = Game.clamp(y, 0, Game.HEIGHT - 60);
     }
 
     public void render(Graphics g) {
         //Color of Player 1
         if(id == ID.Player) g.setColor(Color.blue);
         //Color of Player 2
-        else if(id == ID.Player2) g.setColor(Color.red);
+//        else if(id == ID.Player2) g.setColor(Color.red);
         //Fills the Player with respective color
         g.fillRect(x, y, 32, 32);
     }
+    
+    
 }

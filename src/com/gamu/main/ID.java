@@ -2,6 +2,6 @@ package com.gamu.main;
 
 public enum ID {
     Player(),
-    Player2(),
-    Enemy();
+//    Player2(),
+    BasicEnemy();
 }
