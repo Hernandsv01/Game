@@ -17,15 +17,16 @@ public class Game extends Canvas implements Runnable{
     private Handler handler;
     
     public Game(){
+        handler = new Handler();
+        this.addKeyListener(new KeyInput(handler));
+        
         //Crea instancia de la clase Window con parametros
         new Window(WIDTH, HEIGHT, "A new start", this);
-        
-        handler = new Handler();
         r = new Random();
         
-        for(int i = 0; i < 50; i++){
-            handler.addObject(new Player(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.Player));
-        }
+        handler.addObject(new Player(WIDTH/2-32, HEIGHT/2-32, ID.Player));
+        handler.addObject(new Player(WIDTH/2+64, HEIGHT/2-32, ID.Player2));
+        
     }
     
     
@@ -45,6 +46,7 @@ public class Game extends Canvas implements Runnable{
     }
     
     public void run(){
+         this.requestFocus();
         //Pre-written code for GAME LOOP
         long lastTime = System.nanoTime();
         double amountOfTicks = 60.0;
@@ -66,7 +68,7 @@ public class Game extends Canvas implements Runnable{
             
             if(System.currentTimeMillis()-timer >1000){
                 timer += 1000;
-                System.out.println("FPS: " + frames);
+//                System.out.println("FPS: " + frames);
                 frames = 0;
             }
         }
