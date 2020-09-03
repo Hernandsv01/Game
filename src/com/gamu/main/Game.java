@@ -16,6 +16,7 @@ public class Game extends Canvas implements Runnable{
     private Random r;
     private Handler handler;
     private HUD hud;
+    private Spawn spawner;
     
     public Game(){
         
@@ -26,13 +27,13 @@ public class Game extends Canvas implements Runnable{
         new Window(WIDTH, HEIGHT, "A new start", this);
         
         hud = new HUD();
-        
+        spawner = new Spawn(handler, hud);
         r = new Random();
         
         //Here the objects are created
-        handler.addObject(new Player(WIDTH/2-32, HEIGHT/2-32, ID.Player));
+        handler.addObject(new Player(WIDTH/2-32, HEIGHT/2-32, ID.Player, handler));
 //        handler.addObject(new Player(WIDTH/2+64, HEIGHT/2-32, ID.Player2));
-        handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy));
+        handler.addObject(new BasicEnemy(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.BasicEnemy, handler));
         
     }
     
@@ -85,6 +86,7 @@ public class Game extends Canvas implements Runnable{
     private void tick(){
         handler.tick();
         hud.tick();
+        spawner.tick();
     }
     private void render(){
         BufferStrategy bs = this.getBufferStrategy();
@@ -106,6 +108,7 @@ public class Game extends Canvas implements Runnable{
         bs.show();
     }
     
+    //method to stablish walls for the object
     public static int clamp(int var, int min, int max){
         if(var >= max)
             return var = max;
@@ -116,7 +119,7 @@ public class Game extends Canvas implements Runnable{
     }
     
     public static void main(String[] args) {
-        //Crea instancia de la clase Game
+        //Creates instance of Game class
         new Game();
     }
 }

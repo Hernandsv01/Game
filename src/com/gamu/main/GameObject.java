@@ -1,6 +1,7 @@
 package com.gamu.main;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 public abstract class GameObject {
     //All game objects extend this abstract class
@@ -22,6 +23,8 @@ public abstract class GameObject {
     
     public abstract void tick();
     public abstract void render(Graphics g);
+    //Collision, returns true if rectangles touching
+    public abstract Rectangle getBounds();
     
     //Setters to change variables
     public void setX(int x){
