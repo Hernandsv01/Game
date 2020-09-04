@@ -24,11 +24,14 @@ public class Spawn {
             scoreKeep = 0;
             hud.setLevel(hud.getLevel() + 1);
             
+            //Adds enemy every certain level
             if(hud.getLevel() == 2){
-                handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), ID.BasicEnemy, handler));
+                handler.addObject(new SmartEnemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), ID.SmartEnemy, handler));
             }else if(hud.getLevel() == 3){
                 handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), ID.BasicEnemy, handler));
             } else if(hud.getLevel() == 4){
+                handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), ID.BasicEnemy, handler));
+            } else if(hud.getLevel() == 5){
                 handler.addObject(new FastEnemy(r.nextInt(Game.WIDTH), r.nextInt(Game.HEIGHT), ID.FastEnemy, handler));
             }
         }
