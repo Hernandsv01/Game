@@ -17,7 +17,7 @@ public class Player extends GameObject{
     
     //Player hitbox
     public Rectangle getBounds() {
-        return new Rectangle(x, y, 32, 32);
+        return new Rectangle((int)x, (int)y, 32, 32);
     }
     
     public void tick() {
@@ -25,8 +25,8 @@ public class Player extends GameObject{
         x += velX;
         y += velY;
         
-        x = Game.clamp(x, 0, Game.WIDTH - 38);
-        y = Game.clamp(y, 0, Game.HEIGHT - 60);
+        x = Game.clamp((int)x, 0, Game.WIDTH - 38);
+        y = Game.clamp((int)y, 0, Game.HEIGHT - 60);
         
         collision();
     }
@@ -51,6 +51,6 @@ public class Player extends GameObject{
         //Color of Player 2
 //        else if(id == ID.Player2) g.setColor(Color.red);
         //Fills the Player with respective color
-        g.fillRect(x, y, 32, 32);
+        g.fillRect((int)x, (int)y, 32, 32);
     }
 }

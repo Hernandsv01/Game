@@ -5,8 +5,8 @@ import java.awt.Graphics;
 
 public class HUD {
     
-    public static int HEALTH = 100;
-    public int greenValue = 255;
+    public static float HEALTH = 100;
+    public float greenValue = 255;
     
     private int score = 0;
     private int level = 1;
@@ -27,9 +27,9 @@ public class HUD {
         g.fillRect(15, 15, 200, 32);
         g.setColor(Color.getHSBColor( (1f * HEALTH) / 360, 1f, 1f));
 //        g.setColor(new Color(75, greenValue, 0)); is the basic form of fade
-        g.fillRect(15, 15, HEALTH*2, 32);
+        g.fillRect(15, 15, (int)(HEALTH*2), 32);
         g.setColor(Color.white);
-        g.drawRect(15, 15, HEALTH*2, 32);
+        g.drawRect(15, 15, (int)(HEALTH*2), 32);
         g.drawString(HEALTH+"%", 15, 15);
         
         //Shows score and level

@@ -26,13 +26,13 @@ public class SmartEnemy extends GameObject{
 
     //Enemy hitbox
     public Rectangle getBounds() {
-        return new Rectangle(x, y, 16, 16);
+        return new Rectangle((int)x, (int)y, 16, 16);
     }
     
     public void tick() {
         //Edit the number that -diffX or -diffY are divided by in order to control speed.  
-        int diffX = x-player.getX() - 8;
-        int diffY = y-player.getY() - 8;
+        int diffX = (int)(x-player.getX() - 8);
+        int diffY = (int)(y-player.getY() - 8);
         if(diffX < 0) velX = (-diffX/100 + 1);
         else if(diffX > 0) velX = (-diffX/100 - 1);
        //This else if line tells the enemy to stop moving if already in player on x axis

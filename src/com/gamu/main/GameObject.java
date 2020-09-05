@@ -7,15 +7,15 @@ public abstract class GameObject {
     //All game objects extend this abstract class
     
     //Location
-    protected int x, y;
+    protected float x, y;
     
     //ID to recognize type of object
     protected ID id;
     
     //Velocity of object which is then added to position
-    protected int velX, velY;
+    protected float velX, velY;
     
-    public GameObject(int x, int y, ID id){
+    public GameObject(float x, float y, ID id){
         this.x = x;
         this.y = y;
         this.id = id;
@@ -44,19 +44,19 @@ public abstract class GameObject {
     }
     
     //Getters to obtain the value of the variables
-    public int getX(){
+    public float getX(){
         return x;
     }
-    public int getY(){
+    public float getY(){
         return y;
     }
     public ID getId(){
         return id;
     }
-    public int getVelX() {
+    public float getVelX() {
         return velX;
     }
-    public int getVelY() {
+    public float getVelY() {
         return velY;
     }
 }

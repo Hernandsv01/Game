@@ -3,18 +3,19 @@ package com.gamu.main;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.util.Random;
 
-public class BasicEnemy extends GameObject{
+public class BossEnemyBullet extends GameObject{
     
     private Handler handler;
+    Random r = new Random();
 
-    public BasicEnemy(int x, int y, ID id, Handler handler) {
+    public BossEnemyBullet(int x, int y, ID id, Handler handler) {
         super(x, y, id);
         
         this.handler = handler;
         
-        //BasicEnemy velocity
-        velX = 5;
+        velX = (r.nextInt(5 - -5)+ -5);
         velY = 5;
     }
 
@@ -29,8 +30,10 @@ public class BasicEnemy extends GameObject{
         
         //Reverts velocity if it hits walls
         //Walls == 0 to Game.HEIGHT - 42 and 0 to Game.WIDTH - 24
-        if(y <= 0 || y >= Game.HEIGHT - 42) velY *= -1;
-        if(x <= 0 || x >= Game.WIDTH - 24) velX *= -1;
+//        if(y <= 0 || y >= Game.HEIGHT - 42) velY *= -1;
+//        if(x <= 0 || x >= Game.WIDTH - 24) velX *= -1;
+
+        if(y >= Game.HEIGHT) handler.removeObject(this);
         
         handler.addObject(new Trail((int)x, (int)y, ID.Trail, Color.red, 16, 16, 0.02f, handler));
     }
