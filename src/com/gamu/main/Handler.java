@@ -1,11 +1,11 @@
 package com.gamu.main;
 
 import java.awt.Graphics;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class Handler {
     
-    LinkedList<GameObject> object = new LinkedList<GameObject>();
+    ArrayList<GameObject> object = new ArrayList<GameObject>();
     
     public void tick(){
         for(int i = 0; i < object.size(); i++){
