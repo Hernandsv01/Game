@@ -15,7 +15,7 @@ public class FastEnemy extends GameObject{
         
         //FastEnemy velocity
         velX = 2;
-        velY = 15;
+        velY = 15.5f;
     }
 
     //Enemy hitbox

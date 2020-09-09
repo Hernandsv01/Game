@@ -1,5 +1,6 @@
 package com.gamu.main;
 
+import com.gamu.main.Game.STATE;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -8,7 +9,9 @@ public class KeyInput extends KeyAdapter{
     private Handler handler;
     private boolean[] keyDown = new boolean[4];
     
-    public KeyInput(Handler handler){
+    Game game;
+    
+    public KeyInput(Handler handler, Game game){
         this.handler = handler;
         
         //Fixes sticky keys bug

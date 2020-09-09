@@ -13,6 +13,8 @@ public class Game extends Canvas implements Runnable{
     private Thread thread;
     private boolean running = false;
     
+    public static boolean paused = false;
+    
     private Random r;
     private Handler handler;
     private HUD hud;
@@ -33,8 +35,9 @@ public class Game extends Canvas implements Runnable{
         handler = new Handler();
         hud = new HUD();
         menu = new Menu(this, handler, hud);
-        this.addKeyListener(new KeyInput(handler));
+        this.addKeyListener(new KeyInput(handler, this));
         this.addMouseListener(menu);
+        
         
         //Crea instancia de la clase Window con parametros
         new Window(WIDTH, HEIGHT, "A new start", this);
@@ -52,6 +55,7 @@ public class Game extends Canvas implements Runnable{
             for(int i = 0; i < 20; i++){
                 handler.addObject(new MenuParticle(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.MenuParticle, handler));
             }
+            AudioPlayer.playMenuSound();
         }
         
         
@@ -106,17 +110,19 @@ public class Game extends Canvas implements Runnable{
     private void tick(){
         handler.tick();
         if(gameState == STATE.Game){
-            hud.tick();
-            spawner.tick();
-            
-            if(HUD.HEALTH <= 0){
-                HUD.HEALTH = 100;
-                gameState = STATE.End;
-                handler.object.clear();
-                for(int i = 0; i < 20; i++){
-                    handler.addObject(new MenuParticle(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.MenuParticle, handler));
+                hud.tick();
+                spawner.tick();
+
+                if(HUD.HEALTH <= 0){
+                    AudioPlayer.stopMusic();
+                    AudioPlayer.playEndSound();
+                    HUD.HEALTH = 100;
+                    gameState = STATE.End;
+                    handler.object.clear();
+                    for(int i = 0; i < 20; i++){
+                        handler.addObject(new MenuParticle(r.nextInt(WIDTH), r.nextInt(HEIGHT), ID.MenuParticle, handler));
+                    }
                 }
-            }
         } else if(gameState == STATE.Menu || gameState == STATE.End){
             menu.tick();
         }

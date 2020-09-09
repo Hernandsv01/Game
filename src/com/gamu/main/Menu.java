@@ -28,6 +28,8 @@ public class Menu extends MouseAdapter{
         if(game.gameState == STATE.Menu){
             //Play button
             if(mouseOver(mx, my, 210, 150, 200, 64)){
+                AudioPlayer.stopMusic();
+                AudioPlayer.playGameSound();
                 game.gameState = STATE.Game;
 
                 //Here the objects are created
@@ -60,6 +62,8 @@ public class Menu extends MouseAdapter{
         //Try again button
         if(game.gameState == STATE.End){
             if(mouseOver(mx, my, 210, 350, 200, 64)){
+                AudioPlayer.stopMusic();
+                AudioPlayer.playGameSound();
                 game.gameState = STATE.Game;
                 hud.setScore(0);
                 hud.setLevel(1);
